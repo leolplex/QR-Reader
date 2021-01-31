@@ -17,5 +17,8 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Utilities
 
-Convert Json to Aany language:
+Convert Json to any language:
     https://app.quicktype.io/
+
+Read SQLite databases:
+    https://sqlitebrowser.org/dl/
