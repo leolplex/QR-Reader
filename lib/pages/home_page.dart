@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:qr_reader/pages/addresses_page.dart';
 import 'package:qr_reader/pages/maps_page.dart';
 import 'package:qr_reader/providers/db_provider.dart';
+import 'package:qr_reader/providers/scan_list_provider.dart';
 import 'package:qr_reader/providers/ui_provider.dart';
 import 'package:qr_reader/widgets/custom_navigatorbar.dart';
 import 'package:qr_reader/widgets/scan_button.dart';
@@ -32,13 +33,15 @@ class _HomePageBody extends StatelessWidget {
     final uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
 
-    // final tempScan = new ScanModel(value: 'http://google.com');
-    DBProvider.db.getAllScans().then((value) => print(value));
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
 
     switch (currentIndex) {
       case 0:
+      scanListProvider.loadScansByType('geo');
         return MapsPage();
       case 1:
+      scanListProvider.loadScansByType('http');
         return AddressesPage();
       default:
         return MapsPage();
