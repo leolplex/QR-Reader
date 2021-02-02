@@ -31,8 +31,11 @@ class _HomePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final uiProvider = Provider.of<UiProvider>(context);
     final currentIndex = uiProvider.selectedMenuOpt;
-    DBProvider.db.database;
+
+    // final tempScan = new ScanModel(value: 'http://google.com');
+    // DBProvider.db.newScan(tempScan);
     
+
     switch (currentIndex) {
       case 0:
         return MapsPage();
