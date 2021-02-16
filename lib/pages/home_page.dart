@@ -16,7 +16,12 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           title: Text('History'),
           actions: [
-            IconButton(icon: Icon(Icons.delete_forever), onPressed: () {})
+            IconButton(
+                icon: Icon(Icons.delete_forever),
+                onPressed: () {
+                  Provider.of<ScanListProvider>(context, listen: false)
+                      .deleteAll();
+                })
           ],
         ),
         body: _HomePageBody(),
@@ -38,10 +43,10 @@ class _HomePageBody extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
-      scanListProvider.loadScansByType('geo');
+        scanListProvider.loadScansByType('geo');
         return MapsPage();
       case 1:
-      scanListProvider.loadScansByType('http');
+        scanListProvider.loadScansByType('http');
         return AddressesPage();
       default:
         return MapsPage();
