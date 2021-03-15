@@ -1,4 +1,4 @@
-package com.example.qr_reader
+package com.eratostenes.qr_reader
 
 import io.flutter.embedding.android.FlutterActivity
 
