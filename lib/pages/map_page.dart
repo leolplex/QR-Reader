@@ -10,24 +10,23 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  static final CameraPosition startPoint = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
   Completer<GoogleMapController> _controller = Completer();
 
   @override
   Widget build(BuildContext context) {
-    print(ModalRoute.of(context).settings);
     final ScanModel scan = ModalRoute.of(context).settings.arguments;
+    final CameraPosition startPoint = CameraPosition(
+      target: scan.getLatLng(),
+      zoom: 17,
+    );
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Mapa'),
       ),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        myLocationButtonEnabled: false,
+        mapType: MapType.normal,
         initialCameraPosition: startPoint,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
